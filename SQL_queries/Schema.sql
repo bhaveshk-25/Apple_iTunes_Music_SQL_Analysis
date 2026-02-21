@@ -77,8 +77,8 @@ CREATE TABLE track (
     media_type_id INT NOT NULL REFERENCES media_type(media_type_id),
     genre_id INT NOT NULL REFERENCES genre(genre_id),
     composer VARCHAR(220),
-    minutes INT NOT NULL,
-    file_size_KB INT,
+    minutes NUMERIC(5,2) NOT NULL,
+    file_size_KB NUMERIC(10,2),
     unit_price NUMERIC(10,2) NOT NULL
 );
 
