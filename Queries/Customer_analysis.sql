@@ -2,7 +2,7 @@
 
 -- 1.Which customer spent the most money on music?
 
-SELECT c.customer_id, c.name, SUM(i.total) as total
+SELECT c.customer_id, c.name AS customer_name, SUM(i.total) as total
 FROM customer c
 JOIN invoice i
 ON c.customer_id = i.customer_id
@@ -33,7 +33,6 @@ FROM ( SELECT c.customer_id, c.name, COUNT(i.invoice_id) AS no_of_purchases
 ) GROUP BY customer_type;
 
 
-
 -- 4.Which country generates the most revenue per customers?
 
 SELECT billing_country, 
@@ -54,6 +53,3 @@ LEFT JOIN (
 ON c.customer_id = i.customer_id
 WHERE i.last_purchase IS NULL 
    OR i.last_purchase < CURRENT_DATE - INTERVAL '6 months';
-
-
-

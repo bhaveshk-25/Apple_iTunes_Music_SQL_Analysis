@@ -17,7 +17,7 @@ SELECT a.title AS album_title, COUNT(il.invoice_line_id) AS purchase_count
 FROM album a
 JOIN track t ON a.album_id = t.album_id
 JOIN invoice_line il ON t.track_id = il.track_id
-GROUP BY 1
+GROUP BY album_title
 ORDER BY purchase_count DESC;
 
 
@@ -48,5 +48,5 @@ FROM genre g
 JOIN track t ON g.genre_id = t.genre_id
 LEFT JOIN invoice_line il ON t.track_id = il.track_id
 GROUP BY genre
-ORDER BY total_sold DESC;
+ORDER BY total_sold DESC NULLS LAST;
 

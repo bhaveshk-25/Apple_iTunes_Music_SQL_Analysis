@@ -8,8 +8,8 @@ SELECT a.track_id as item_1,
 	   COUNT(*) as frequency
 FROM invoice_line a
 JOIN invoice_line b ON a.invoice_id = b.invoice_id AND a.track_id < b.track_id
-GROUP BY 1, 2
-ORDER BY 3 DESC
+GROUP BY item_1,item_2
+ORDER BY frequency DESC
 LIMIT 10;
 
 
@@ -23,7 +23,7 @@ FROM media_type m
 JOIN track t ON m.media_type_id = t.media_type_id
 JOIN invoice_line il ON t.track_id = il.track_id
 JOIN invoice i ON il.invoice_id = i.invoice_id
-GROUP BY 1, 2
-ORDER BY 1, 2;
+GROUP BY format, sale_year
+ORDER BY format, sale_year;
 
   

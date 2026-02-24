@@ -9,8 +9,8 @@ FROM (
     FROM invoice
     GROUP BY customer_id
 )
-GROUP BY 1
-ORDER BY 1;
+GROUP BY purchase_count
+ORDER BY purchase_count;
 
 
 -- 2. How long is the average time between customer purchases?
@@ -32,7 +32,7 @@ WITH genre_counts AS (
     FROM invoice i
     JOIN invoice_line il ON i.invoice_id = il.invoice_id
     JOIN track t ON il.track_id = t.track_id
-    GROUP BY 1
+    GROUP BY i.customer_id
 )
 SELECT 
     ROUND(COUNT(CASE WHEN genre_variety > 1 THEN 1 END) * 100.0 / COUNT(*), 2) as percent_multi_genre_fans

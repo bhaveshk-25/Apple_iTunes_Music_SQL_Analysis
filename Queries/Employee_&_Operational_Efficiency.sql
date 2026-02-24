@@ -9,8 +9,8 @@ SELECT
 FROM employee e
 JOIN customer c ON e.employee_id = c.support_rep_id
 JOIN invoice i ON c.customer_id = i.customer_id
-GROUP BY 1
-ORDER BY 2 DESC;
+GROUP BY e.employee_name
+ORDER BY total_managed_revenue DESC;
 
 
 -- 2. What is the average number of customers per employee?
@@ -33,6 +33,6 @@ SELECT
 FROM employee e
 JOIN customer c ON e.employee_id = c.support_rep_id
 JOIN invoice i ON c.customer_id = i.customer_id
-GROUP BY 1, 2
-ORDER BY 3 DESC;
+GROUP BY e.city, e.country
+ORDER BY regional_revenue DESC;
 

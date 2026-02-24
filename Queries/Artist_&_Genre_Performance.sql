@@ -8,8 +8,8 @@ FROM artist ar
 JOIN album al ON ar.artist_id = al.artist_id
 JOIN track t ON al.album_id = t.album_id
 JOIN invoice_line il ON t.track_id = il.track_id
-GROUP BY 1
-ORDER BY 2 DESC
+GROUP BY artist_name
+ORDER BY total_revenue DESC
 LIMIT 5;
 
 
@@ -22,7 +22,7 @@ SELECT
 FROM genre g
 JOIN track t ON g.genre_id = t.genre_id
 JOIN invoice_line il ON t.track_id = il.track_id
-GROUP BY 1
+GROUP BY genre
 ORDER BY total_revenue DESC;
 
 
@@ -38,10 +38,9 @@ WITH genre_country_sales AS (
     JOIN invoice_line il ON i.invoice_id = il.invoice_id
     JOIN track t ON il.track_id = t.track_id
     JOIN genre g ON t.genre_id = g.genre_id
-    GROUP BY 1, 2
+    GROUP BY i.billing_country, genre
 )
 SELECT billing_country, genre, tracks_sold
 FROM genre_country_sales
 WHERE popularity_rank = 1
 ORDER BY tracks_sold DESC;
-
