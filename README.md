@@ -1,4 +1,14 @@
 # 🎵 Apple iTunes Music Store – Business Analysis
+
+### Table of contents
+- Project Introduction
+     - Exceutive Summary
+     - Objective
+     - About the dataset
+- Analysis Output
+- Tech used
+- Impact and Conclusion
+  
 ## 📌 Project Overview
 
 This project presents an end-to-end SQL-based business analysis of the Apple iTunes Music Store database. The objective was to evaluate revenue performance, customer purchasing behavior, genre and artist contribution, and geographic sales distribution to uncover strategic growth opportunities.
